@@ -3,7 +3,7 @@
 name: Paris sportifs
 on:
     push:
-        branches: [master]
+        branches: ["main"]
 
 jobs:
     build:
@@ -18,4 +18,5 @@ jobs:
                   port: 22
 
                   script: |
+                      cd /home/ubuntu/test_ssh_paris_sportifs
                       git pull
