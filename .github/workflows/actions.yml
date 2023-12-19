@@ -19,4 +19,4 @@ jobs:
 
                   script: |
                       cd /home/ubuntu/test_ssh_paris_sportifs
-                      git pull
+                      mkdir essaissh
