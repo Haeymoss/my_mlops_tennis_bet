@@ -6,6 +6,17 @@ on:
         branches: ["main"]
 
 jobs:
+    test:
+        runs-on: ubuntu-latest
+        steps:
+        - uses: actions/checkout@v3 # utilise l’action checkout@v3 pour copier le code sur la machine virtuelle qui exécute les tâches
+        - name: Test python Code # nom de l’étape suivante
+    # Exécute les tests unitaires sur le code source à l’aide de l’outil de test pytest. Au préalable, les dependances nécessaires ont été installées et nous nous sommes positionné dans l'emplacement d'exécution des test  
+          run: |
+            pip3 install -r requirements.txt 
+            cd codes/api
+            pytest
+
     build:
         runs-on: ubuntu-latest
         steps:
@@ -19,4 +30,4 @@ jobs:
 
                   script: |
                       cd /home/ubuntu/test_ssh_paris_sportifs
-                      mkdir essaissh
+                      git pull
