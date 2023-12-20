@@ -31,4 +31,8 @@ jobs:
 
                   script: |
                       cd /home/ubuntu/test_ssh_paris_sportifs/my_mlops_tennis_bet
+                      docker-compose down
                       git pull
+                      sleep 5
+                      docker-compose up -d --build
+
