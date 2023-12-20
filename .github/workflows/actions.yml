@@ -9,9 +9,8 @@ jobs:
     test:
         runs-on: ubuntu-latest
         steps:
-            - uses: actions/checkout@v3 # utilise l’action checkout@v3 pour copier le code sur la machine virtuelle qui exécute les tâches
-            - name: Test python Code # nom de l’étape suivante
-              # Exécute les tests unitaires sur le code source à l’aide de l’outil de test pytest. Au préalable, les dependances nécessaires ont été installées et nous nous sommes positionné dans l'emplacement d'exécution des test
+            - uses: actions/checkout@v3 
+            - name: Test python Code 
               run: |
                   pip3 install -r requirements.txt 
                   cd codes/api/
@@ -21,10 +20,6 @@ jobs:
         needs: test
         runs-on: ubuntu-latest
         steps:
-            - name: Install Docker Compose
-            run: |
-              sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
-              sudo chmod +x /usr/local/bin/docker-compose
             - name: executing remote ssh commands
               uses: appleboy/ssh-action@master
               with:
@@ -35,7 +30,7 @@ jobs:
 
                   script: |
                       cd /home/ubuntu/test_ssh_paris_sportifs/my_mlops_tennis_bet
-                      docker-compose down
+                      sudo docker-compose down
                       git pull
                       sleep 5
                       docker-compose up -d --build
