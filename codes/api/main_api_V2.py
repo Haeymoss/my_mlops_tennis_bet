@@ -72,12 +72,19 @@ api = FastAPI(
 
     ])
 
-
+"""
 @api.get('/home', tags=['home'], dependencies=[Depends(JWTBearer())])
+def get_home():
+
+    return {'Greetings': 'Bienvenue'}
+"""
+
+@api.get('/home', tags=['home'])
 def get_home():
     """Return greetings
     """
-    return {'Greetings': 'Bienvenue'}
+    return ('Bienvenue')
+
 
 
 @api.get('/player_from_list', tags=['Players'], dependencies=[Depends(JWTBearer())])
