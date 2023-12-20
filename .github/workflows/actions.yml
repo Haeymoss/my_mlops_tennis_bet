@@ -14,7 +14,7 @@ jobs:
               # Exécute les tests unitaires sur le code source à l’aide de l’outil de test pytest. Au préalable, les dependances nécessaires ont été installées et nous nous sommes positionné dans l'emplacement d'exécution des test
               run: |
                   pip3 install -r requirements.txt 
-                  cd codes/api/
+                  cd api/
                   pytest
 
     build:
